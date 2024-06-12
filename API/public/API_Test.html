@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PokeCard | API PROJECT</title>
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="./imgs/pokeball.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <main>
+        <h1>POKEMON CARD</h1>
+
+        <div class="input"><input type="text" id="searchInput" list="valoresLista" placeholder="Pesquise aqui seu Pokémon..."><i class="fa-solid fa-magnifying-glass"></i></div>
+        <datalist id="valoresLista"></datalist>
+        <script src="./scripts/input.js"></script>
+
+        <script>
+            document.querySelector(".fa-magnifying-glass").addEventListener("click", ()=>{
+                document.getElementById("searchInput").focus()
+            })
+        </script>
+
+        <button id="capturar" onclick="mainFetch()">Capturar</button>
+
+        <div class="container">
+            <div id="card">
+                <p class="hp">
+                    HP
+                    <span>0</span>
+                </p>
+                <span class="poke-photo"><img src="./imgs/fundo-padrao.png" style="width: 50%;height: auto;"/></span>
+                <h2 class="poke-name">Pokeball</h2>
+                <div class="stats">
+                    <div class = "fundo">
+                        <h3 class="attack">0</h3>
+                        <p>Ataque</p>
+                    </div>
+                    <div class = "fundo">
+                        <h3 class="defense">0</h3>
+                        <p>Defesa</p>
+                    </div>
+                    <div class = "fundo">
+                        <h3 class="weight">0</h3>
+                        <p>Peso</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pokedex">
+            <div>
+                <img src="./imgs/pokedex.webp">
+                <span class="counter">0</span>
+            </div>
+            <p id="openPokedex">Entrar na sua pokédex</p>
+        </div>
+
+        <dialog id="dialogBox">
+            <button id="close">X</button>
+            <ul id="pokemons-list">
+            </ul>            
+        </dialog>
+
+        <script>
+            //Isso é uma função que inicia a si mesma sem ser chamada
+            (function(){ 
+              var dialog = document.getElementById('dialogBox'); 
+              document.getElementById('openPokedex').onclick = function() { dialog.style.display = 'flex'; }; 
+              document.getElementById('close').onclick = function() { dialog.style.display = 'none'; }; 
+
+              document.querySelector(".pokedex>div").onclick = function(){ dialog.style.display = 'flex'; };
+            })();
+        </script>
+    </main>
+    <script src="./scripts/API_Test.js"></script>
+</body>
+</html>

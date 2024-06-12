@@ -1,0 +1,303 @@
+@font-face {
+    font-family: pokemon;
+    src: url(../fonts/Pokemon\ Solid.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 112.25%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #00bfff, white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 110vh;
+    overflow-y: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 110vh;
+    width: 80%;
+}
+
+h1 {
+    font-family: pokemon;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: #0075BE;
+    color: #FFCC00;
+    font-size: 2.75rem;
+    margin-top: -35px;
+}
+
+input,i.fa-magnifying-glass {
+    border-radius: 2px 0 0 2px;
+    border: none;
+    height: 30px;
+    width: 250px;
+    padding: 3px 6px;
+}
+
+.input {
+    display: flex;
+}
+
+i.fa-magnifying-glass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 35px;
+    padding: 2px 5px;
+    border-radius: 0 2px 2px 0;
+    border-left: 1px solid rgba(128, 128, 128, 0.797);
+    cursor: pointer;
+}
+
+.container {
+    width: 350px;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    background-color: transparent;
+    border: 4px solid #f03e3e;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+#card {
+    position: relative;
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background: radial-gradient(circle at 50% 0%, #f03e3e 36%, transparent 36%);
+}
+
+#card img {
+    display: block;
+    max-height: 200px;
+    position: relative;
+    margin: 10px auto 0;
+}
+
+.hp {
+    width: 80px;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 30px;
+    margin-left: auto;
+    font-weight: 400;
+}
+
+.poke-name {
+    text-align: center;
+    font-weight: 600;
+}
+
+.poke-name::first-letter{
+    text-transform: capitalize;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.stats p {
+    color: #404060;
+}
+
+#capturar {
+    margin-top: 1.5%;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#capturar:hover {
+    background-color: #f0f0f0;
+    opacity: 0.9;
+} 
+
+.pokedex {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.pokedex div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    position: relative;
+    transition: transform 0.3s ease-in;
+    transform-origin: center;
+}
+
+.pokedex div:hover{
+    transform:scale(1.1)
+}
+
+.pokedex > div > img {
+    width: 100px;
+    height: auto;
+}
+
+.pokedex > p,.pokedex > div > span {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding:  7px 15px;
+    margin-top: 5%;
+    transition: all 0.3s ease-in-out;
+}
+
+.pokedex > p:hover {
+    background-color: rgb(222, 222, 222);
+    opacity: 0.9;
+}
+
+.pokedex > div > span {
+    margin-top: 0;
+    position: absolute;
+    top: -15px;
+    left: 58px;
+    transform-origin: right top;
+}
+
+.pokedex > div:hover > span {
+    transform: scale(1.1);
+}
+
+#dialogBox {
+    position: absolute;
+    top: 15%;
+    bottom: 5%;
+    width: 70%;
+    left: 15%;
+    height: auto;
+    /*preciso da ajuda do joão para alterar a cor*/
+    background: linear-gradient(to bottom, #00bfff,#ff2c2c);
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    overflow-y: auto;
+}
+
+#close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    width: 3%;
+    height: 5.75%;
+    font-size: 1.3rem;
+    padding: 17px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(255, 70, 70);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#close:hover {
+    background-color:#e23939
+}
+
+#pokemons-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    width: 100%;
+    height: 90%;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pokemon-captured {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 41%;
+}
+
+.pokemon-captured:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-captured img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.pokemon-captured p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.pokemon-captured .excluir {
+    background-color: #ff6666;
+    width: 90%;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    border: none;
+}
+
+.pokemon-captured .excluir:hover {
+    background-color: #fe3737;
+    opacity: 0.9;
+}
+
+.fundo {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.285);
+    border-radius: 50%;
+    min-width: 80px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
